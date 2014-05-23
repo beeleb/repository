@@ -1,7 +1,9 @@
-﻿import matplotlib.pyplot as plt
-import numpy as np
+﻿from __future__ import division #(p,q)区間をn-1等分するので小数が含まれる場合に対応させるため。
+from pylab import * 
+#pylabで数式をいろいろ定義してくれてるらしく、numpyいらなかったみたいです。
+import matplotlib.pyplot as plt
 
-def subplots():
+def subplots(): #このへんまだよくわからないです。細かい目盛りを消して軸に矢印を入れたい。
     "Custom subplots with axes throught the origin"
     fig, ax = plt.subplots()
 
@@ -13,15 +15,15 @@ def subplots():
     
     ax.grid()
     return fig, ax
-#まず関数f(x)に関して
-#このあたりからfor文使って接線を一本一本描いてくといいのかな？本数をnで指定させてfor i……とか。
-#最初に指定した区間[a,b]をn分割させてx=aにおける接線、x=a+((b-a)/n)における接線、……x=bにおける接線、とやりたい。
-#接線をどうやって求めるか？微分しなくてはいけないけど……？→Sympyからdiffを用いて微分係数を求められるので意外とラクに行けるか……？
-
-
-fig, ax = subplots()  # Call the local version, not plt.subplots()
-x = np.linspace(-2, 10, 200) #左から順番にグラフの左端のx座標、右端のx座標、打つ点の数……課題では後から入れられるようにしたい。
-y = np.sin(x)　#プロットの対象とする関数……課題ではこれも後から入れられるようにしたい
-ax.plot(x, y, 'r-', linewidth=2, label='sine function', alpha=0.6)　#linewidthは線の太さ、labelはlegend内の文字、alphaは濃さ(1以下)をそれぞれ表す。
-ax.legend(loc='lower right')
-plt.show()
+fig, ax = subplots()
+def f(x,a):
+	return -x**2 + a*x #包絡線の式を入れる。
+p = -10 #左端のa
+q = 10 #右端のa
+n = 50 #引く包絡線の数
+for i in range(n):
+	r = p + (q - p) * i / (n - 1) #n個の接線を引き、2個は両端にあるので区間はn-1等分されるといいのかな、と考えました。
+	a = linspace(p, q, (q-p) * 10) #特に根拠はないのですが,プロットする点の数はaが1増えるごとに10増えるようにしました。傾きが大きくなってくると厳しい……？
+	b = f(r, a)
+        ax.plot(a, b, 'b-', linewidth=1, alpha=0.3) #linewidthは線の太さ、alphaは濃さ(1以下)をそれぞれ表す。
+show()	
