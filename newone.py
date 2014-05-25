@@ -18,14 +18,20 @@ def subplots():
     return fig, ax
     
 fig, ax = subplots()
+
+#ここから下に変数が入っている。
 def f(x,a):
-	return a*x - x**2 #包絡線の式を入れる。
-p = -2.5 #xの最小値
-q = 2.5 #xの最大値
+	return a *x - x**2  #包絡線の式を入れる。
+p = -3 #xの最小値
+q = 3 #xの最大値
 n = 12 #引く包絡線の数
-a_min = -5 #表示させるaの最小値
-a_max = 5 #表示させるaの最大値
-#a_minとa_maxは自動で定められると嬉しいけど……？
+a_min = -10 #表示させるaの最小値
+a_max = 10 #表示させるaの最大値
+y_min = -6 #表示させるbの最小値(最大値はa軸とb軸の縮尺が1:1になるよう自動で決まる)
+ylim(ymin = y_min) 
+ylim(ymax= y_min + a_max - a_min) 
+#変数ここまで。下3つは自動で定められると嬉しいけど……？
+
 
 
 for i in range(n):
