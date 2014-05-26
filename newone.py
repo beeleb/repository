@@ -11,6 +11,7 @@ def subplots():
         ax.spines[spine].set_position('zero')
     for spine in ['right', 'top']:
         ax.spines[spine].set_color('none')
+    ax.set(aspect=1) #アスペクト比を固定しました。
     ax.set_xticks([]) 
     ax.set_yticks([])
     xlabel("a", fontname='serif') # x軸のタイトル
@@ -27,16 +28,17 @@ q = 3 #xの最大値
 n = 12 #引く包絡線の数
 a_min = -10 #表示させるaの最小値
 a_max = 10 #表示させるaの最大値
-y_min = -6 #表示させるbの最小値(最大値はa軸とb軸の縮尺が1:1になるよう自動で決まる)
+y_min = -6 #表示させるbの最小値(最大値はa軸とb軸の縮尺が1:1になるよう自動で決まる)……アスペクト比を定めただけだと以上に縦長なグラフが出てくるので。
 ylim(ymin = y_min) 
 ylim(ymax= y_min + a_max - a_min) 
 #変数ここまで。下3つは自動で定められると嬉しいけど……？
 
 
 
+a = linspace(a_min, a_max, (a_max - a_min) * 10) #特に根拠はないのですが,プロットする点の数はaが1増えるごとに10増えるようにしました。傾きが大きくなってくると厳しい……？
+#aはiの値によらず一定の範囲なので、for文の外に出しました。
 for i in range(n):
 	r = p + (q - p) * i / (n - 1) #n個の接線を引き、2個は両端にあるので区間はn-1等分されるといいのかな、と考えました。
-	a = linspace(a_min, a_max, (a_max - a_min) * 10) #特に根拠はないのですが,プロットする点の数はaが1増えるごとに10増えるようにしました。傾きが大きくなってくると厳しい……？
 	b = f(r, a)
         ax.plot(a, b, 'k', linewidth=0.5, alpha=1) #linewidthは線の太さ、alphaは濃さ(1以下)をそれぞれ表す。黒色の線は'k'で指定する。指定しないとカラフルでそれはそれで見やすい。
 show()	
