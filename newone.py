@@ -31,7 +31,6 @@ ax.set(aspect=1)
 
 plt.figtext(0.85, 0.35, '$a$')#直接位置を指定している。この位置を変数使って表せればこれでいい……？
 plt.figtext(0.5, 0.95, '$b$')
-#ちょっと文字が小さいので大きくしたい。
 
 for direction in ["xzero", "yzero"]:
     ax.axis[direction].set_axisline_style("-|>")
@@ -53,3 +52,5 @@ for i in range(n):
 	b = f(r, a)
         ax.plot(a, b, 'k', linewidth=0.5, alpha=1) #linewidthは線の太さ、alphaは濃さ(1以下)をそれぞれ表す。黒色の線は'k'で指定する。指定しないとカラフルでそれはそれで見やすい。
 show()
+#plt.savefig('test1.png',bbox_inches='tight',dpi=150)
+#上のは画像保存用。
