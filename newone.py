@@ -1,6 +1,5 @@
 ﻿from __future__ import division  # (p,q)区間をn-1等分するので小数が含まれる場合に対応させる
-from pylab import *
-# pylabで数式をいろいろ定義してくれてるらしく、numpyは不要
+from numpy import linspace
 from mpl_toolkits.axes_grid.axislines import SubplotZero
 import matplotlib.pyplot as plt
 # ここから下に変数が入る
@@ -34,15 +33,15 @@ for direction in ["xzero", "yzero"]:
     ax.axis[direction].set_visible(True)
 for direction in ["left", "right", "bottom", "top"]:
     ax.axis[direction].set_visible(False)
-ylim(ymin=y_min)  # この位置より前に置くとx方向がが狭くなってしまった
-ylim(ymax=y_max)
+plt.ylim(ymin=y_min)  # この位置より前に置くとx方向がが狭くなってしまった
+plt.ylim(ymax=y_max)
 a = linspace(a_min, a_max, (a_max-a_min) * 10)  # プロットする点の数はaが1増えるごとに10増えるようにした
 for i in range(n):
     r = p+(q-p)*i/(n-1)  # n個の接線を引き2個は両端にあるので区間はn-1等分される
     b = f(r, a)
     ax.plot(a, b, 'k', linewidth=0.5, alpha=1)
 # linewidth:線の太さ, alpha:濃さ(1以下), 黒色の線は'k'
-show()
+plt.show()
 # plt.savefig('test1.png',bbox_inches='tight',dpi=150)
 # plt.savefig('test2.pdf,bbox_inches='tight',pad_inches=0)
 # それぞれ画像保存用,PDF保存用
