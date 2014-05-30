@@ -1,5 +1,6 @@
 ﻿from __future__ import division  # (p,q)区間をn-1等分するので小数が含まれる場合に対応させる
 from numpy import linspace
+from numpy import fabs
 from mpl_toolkits.axes_grid.axislines import SubplotZero
 import matplotlib.pyplot as plt
 # ここから下に変数が入る
