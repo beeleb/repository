@@ -16,8 +16,8 @@ a_max = 40  # 表示させるaの最大値
 y_min = 0  # 表示させるbの最小値(最大値はa軸とb軸の縮尺が1:1になるよう自動で決まる)
 # アスペクト比を定めただけだと以上に縦長なグラフが出てくるのでylimを定めた
 y_max = y_min+a_max-a_min  # これは変数ではない
-plt.figtext(0.85, 0.35, '$a$')  # 直接位置を指定しているので、グラフの位置を変えるときにこれも変える
-plt.figtext(0.5, 0.95, '$b$')
+plt.figtext(0.85, 0.1, '$X$')  # 直接位置を指定しているので、グラフの位置を変えるときにこれも変える
+plt.figtext(0.2, 0.95, '$P$')
 # ここより上に変数が入る
 fig = plt.figure(1)
 ax = SubplotZero(fig, 111)
@@ -27,8 +27,7 @@ ax.axvline(linewidth=1.0, color="black")
 ax.set_xticks([])  # 空のlistを指定することでticksが入らない
 ax.set_yticks([])
 ax.set(aspect=1)
-plt.figtext(0.85, 0.1, '$X$')  # 直接位置を指定しているので、グラフの位置を変えるときにこれも変える
-plt.figtext(0.2, 0.95, '$P$')
+
 for direction in ["xzero", "yzero"]:
     ax.axis[direction].set_axisline_style("-|>")
     ax.axis[direction].set_visible(True)
