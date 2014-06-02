@@ -14,7 +14,7 @@ n = 12  # 引く包絡線の数
 a_min = -10  # 表示させるaの最小値
 a_max = 10  # 表示させるaの最大値
 y_min = -6  # 表示させるbの最小値(最大値はa軸とb軸の縮尺が1:1になるよう自動で決まる)
-# アスペクト比を定めただけだと以上に縦長なグラフが出てくるのでylimを定めた
+# アスペクト比を定めただけだと異常に縦長なグラフが出てくるのでylimを定めた
 y_max = y_min+a_max-a_min  # これは変数ではない
 plt.figtext(0.85, 0.35, '$a$')  # 直接位置を指定しているので、グラフの位置を変えるときにこれも変える
 plt.figtext(0.5, 0.95, '$b$')
@@ -34,7 +34,7 @@ for direction in ["xzero", "yzero"]:
     ax.axis[direction].set_visible(True)
 for direction in ["left", "right", "bottom", "top"]:
     ax.axis[direction].set_visible(False)
-plt.ylim(ymin=y_min)  # この位置より前に置くとx方向がが狭くなってしまった
+plt.ylim(ymin=y_min)  # この位置より前に置くとx方向が狭くなってしまった
 plt.ylim(ymax=y_max)
 a = linspace(a_min, a_max, (a_max-a_min) * 10)  # プロットする点の数はaが1増えるごとに10増えるようにした
 for i in range(n):
@@ -43,6 +43,6 @@ for i in range(n):
     ax.plot(a, b, 'k', linewidth=0.5, alpha=1)
 # linewidth:線の太さ, alpha:濃さ(1以下), 黒色の線は'k'
 plt.show()
-# plt.savefig('test1.png',bbox_inches='tight',dpi=150)
+# plt.savefig('envelopeX.png', bbox_inches='tight', pad_inches=0)
 # plt.savefig('test2.pdf,bbox_inches='tight',pad_inches=0)
 # それぞれ画像保存用,PDF保存用
