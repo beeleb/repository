@@ -19,37 +19,40 @@
 
 包絡線定理の解説を書く．
 
-数式(番号なし)の例
-\[
-f(x, t) = t x - t^2
-\]
-
-
-数式(番号つき)の例
 \begin{equation}
-f(x, t)  = -(t - \frac{x}{2})^2 + \frac{x^2}{4} \label{eq:square}
+f(a, x) = x a - x^2\label{eq:1}
 \end{equation}
-
-数式(番号つき)の例(高さが調整されたカッコ)
+とおく。\eqref{eq:1}式の右辺を平方完成すると
 \begin{equation}
-f(x, t) = -\left(t - \frac{x}{2}\right)^2 + \frac{x^2}{4} \label{eq:square-2}
+f(a,  x) = -\left(x - \frac{a}{2}\right)^2 + \frac{a^2}{4} \label{eq:2}
 \end{equation}
-
-
-
-数式番号の引用の例：
-平方完成の式\eqref{eq:square}より．．．
+と変形できる。
+平方完成の式\eqref{eq:2}より, 
+\begin{equation} 
+\min_{x}f(a, x) = \frac{a^2}{4} \label{eq:3}
+\end{equation}
+よって, $x$にさまざまな値を代入して$a-b$グラフ上に描かれる複数の直線について, そのすべてに接する包絡線を$a$の関数とみて$g(x)$とおくと
+\begin{equation} 
+g(a) = \frac{a^2}{4} \label{eq:4}
+\end{equation}
+と表されることがわかる。\\
+\\
+具体的に$x$の値をいくつかとって直線を重ねてみると, たしかに求めた$g(a)$に近い形が見えてくる。
+たとえば$x$を$-2$から$2$まで$\displaystyle{\frac{1}{3}}$ずつ変化させて$13$本の直線を引いたものが図1\\
+$x$を$-3$から$3$まで$\displaystyle{\frac{1}{5}}$ずつ変化させて$31$本の直線を引いたものが図2である。\\
+\\
 
 \begin{figure}
  \centering
- \includegraphics{envelope0.pdf}
+ \includegraphics[scale=0.7]{envelope0.pdf}
  \caption{1つ目の図の表示}
  \label{fig:1}
 \end{figure}
 
 \begin{figure}
  \centering
- \includegraphics{envelope1.pdf}
+ \includegraphics[scale=0.7]{envelope1.pdf}
+
  \caption{2つ目の図の表示}
  \label{fig:2}
 \end{figure}
@@ -117,6 +120,10 @@ f(x, t) = -\left(t - \frac{x}{2}\right)^2 + \frac{x^2}{4} \label{eq:square-2}
 \begin{verbatim}
 1～6行目：必要な機能を各モジュールからインポートしています。
 9, 10行目：f(x, a)を定義しています。xにいくつかの値を代入し、最終的にa-bグラフを求めます。
+11～12行目：p, qにそれぞれxに代入する値の最小値, 最大値を入れます。
+13行目：nは引く線の本数です。
+14～15行目：最終的にa-bグラフに表示させるaの最小値と最大値をそれぞれa_min, a_maxに代入します。
+16～17行目：最終的にa-bグラフに表示させるbの最小値をy_minに代入します。y_maxはbの最大値ですが、表示されるaとbの幅が一致するよう自動で定まります。
 \end{verbatim}
 \end{quote}
 
