@@ -1,6 +1,7 @@
 ﻿from __future__ import division  # (p,q)区間をn-1等分するので小数が含まれる場合に対応させる
 from numpy import linspace
 from numpy import fabs
+from numpy import array
 from mpl_toolkits.axes_grid.axislines import SubplotZero
 import matplotlib.pyplot as plt
 # ここから下に変数が入る
@@ -27,16 +28,13 @@ ax.axvline(linewidth=1.0, color="black")
 ax.set_xticks([])  # 空のlistを指定することでticksが入らない
 ax.set_yticks([])
 ax.set(aspect=1)
-plt.figtext(0.85, 0.35, '$a$')  # 直接位置を指定している
-plt.figtext(0.5, 0.95, '$b$')
 for direction in ["xzero", "yzero"]:
     ax.axis[direction].set_axisline_style("-|>")
     ax.axis[direction].set_visible(True)
-for direction in ["left", "right", "bottom", "top"]:
-    ax.axis[direction].set_visible(False)
 plt.ylim(ymin=y_min)  # この位置より前に置くとx方向が狭くなってしまった
 plt.ylim(ymax=y_max)
-a = linspace(a_min, a_max, (a_max-a_min) * 10)  # プロットする点の数はaが1増えるごとに10増えるようにした
+a = linspace(a_min, a_max, (a_max-a_min) * 10)  # 点の数はaの動く範囲の長さ×10,これで曲線にも対応する
+# linspaceの点の数に小数が来ることがあり得るのですが、その場合は勝手に小数点以下を切り捨てた数の点をとってくれるようです
 for i in range(n):
     r = p+(q-p)*i/(n-1)  # n個の接線を引き2個は両端にあるので区間はn-1等分される
     b = f(r, a)
